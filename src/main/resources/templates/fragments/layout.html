@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<th:block th:fragment="script">
+    <!--Cascading Style Sheet-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons"><!--materialize icon-->
+    <link rel="stylesheet" href="/webjars/materializecss/0.99.0/css/materialize.min.css" media="screen,projection"/>
+    <link rel="stylesheet" href="/webjars/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <!--Cascading Style Sheet end-->
+
+    <!--java script-->
+    <script type="text/javascript" src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/materializecss/0.99.0/js/materialize.min.js"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <!--java script end-->
+</th:block>
+
+<th:block th:fragment="header">
+
+    <div class="navbar-fixed">
+        <nav style="z-index: 997 !important;">
+            <div class="nav-wrapper black">
+                <ul class="left" th:if="${session.user ne null}">
+                    <li>
+                        <a href="#" data-activates="mobile-demo" class="waves-effect button-collapse show-on-large">
+                            <i class="medium material-icons">menu</i></a>
+                    </li>
+                </ul>
+
+                <ul class="right" style="margin-right: 4px !important;" th:if="${session.user ne null}">
+                    <li><a href="#"><i class="medium material-icons">email</i></a></li>
+                    <li><a href="#"><i class="medium material-icons">add_alert</i></a></li>
+                    <li th:text="${session.user.firstName+' '+session.user.lastName}"></li>
+                    <li>
+                        <a class="dropdown-button" href="#" data-activates="dropdown1">
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!--DROPDOWN-->
+            <ul id="dropdown1" class="dropdown-content" style="margin-top: 65px; width: inherit !important;">
+                <li><a class="black-text" href="#"><span>Setting</span></a></li>
+                <li><a class="black-text" href="#"><span>Profile</span></a></li>
+                <li><a class="black-text" th:href="@{/logout}"><span>Logout</span></a></li>
+            </ul>
+        </nav>
+    </div>
+
+</th:block>
+
+<th:block th:fragment="drawer">
+    <ul class="side-nav black" id="mobile-demo" style="top: inherit !important;">
+
+        <li class="black">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-blue white-text">
+                        <i class="material-icons white-text">dashboard</i>Dashboard
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <li class="black">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-blue white-text"><i class="material-icons white-text">folder_special</i>Layouts
+                        <i class="material-icons right" style="margin-right:0;">arrow_drop_down</i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">fullscreen</i>Full
+                                Screen<span class="new badge right yellow grey lighten-1"
+                                            data-badge-caption="updated"></span></a></li>
+                            <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">swap_horiz</i>Horizontal
+                                Menu<span class="new badge right yellow darken-3"></span></a></li>
+                            <li>
+                                <div class="divider"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li class="black">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header waves-effect waves-blue white-text"><i class="material-icons white-text">folder_open</i>A
+                        submenu <i class="material-icons right white-text" style="margin-right:0;">arrow_drop_down</i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">fullscreen</i>Full
+                                Screen</a></li>
+                            <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">swap_horiz</i>Horizontal
+                                Menu</a></li>
+                            <li>
+                                <div class="divider"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</th:block>
+
+<th:block th:fragment="footer">
+    <footer class="cus-footer black" id="footer">
+        <div class="footer-copyright">
+            <div class="container" class="footer">
+                <span class="white-text">&copy; 2018 OurMind<sup>TM</sup> - All Rights Reserved</span>
+            </div>
+        </div>
+    </footer>
+</th:block>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>create admin user</title>
+    <th:block th:replace="fragments/layout::script">script</th:block>
+</head>
+<body>
+
+<div th:replace="fragments/layout::header"></div>
+<div th:replace="fragments/layout::drawer"></div>
+
+<div class="row">
+    <div class="section"></div>
+    <div class="section"></div>
+
+    <div class="col s12 m10 offset-m1">
+        <div class="card gray lighten-5 z-depth-4">
+            <div class="card-content black-text">
+                <span class="card-title">CREATE AN ADMIN ACCOUNT</span>
+                <div class="row">
+                    <form class="col s12 m10 offset-m1" th:action="@{/}" th:method="post">
+                        <div class="row">
+
+                            <div class="input-field col s12 m12 l4">
+                                <input id="first_name" type="text" class="validate" th:field="*{user.firstName}">
+                                <span th:if="${#fields.hasErrors('user.firstName')}" th:errors="*{user.firstName}" class="red-text"></span>
+                                <label for="first_name">First Name</label>
+                            </div>
+
+                            <div class="input-field col s12 m12 l4">
+                                <input id="last_name" type="text" class="validate" th:field="*{user.lastName}">
+                                <span th:if="${#fields.hasErrors('user.lastName')}" th:errors="*{user.lastName}" class="red-text"></span>
+                                <label for="last_name">Last Name</label>
+                            </div>
+
+                            <div class="input-field col s12 m12 l4">
+                                <input id="nic" type="text" class="validate" th:field="*{user.nicNo}">
+                                <span th:if="${#fields.hasErrors('user.nicNo')}" th:errors="*{user.nicNo}" class="red-text"></span>
+                                <label for="nic">NIC</label>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m12 l8">
+                                <input id="email" type="email" class="validate" th:field="*{user.email}">
+                                <span th:if="${#fields.hasErrors('user.email')}" th:errors="*{user.email}" class="red-text"></span>
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m12 l4">
+                                <input id="user" type="text" th:field="*{user.username}" class="validate">
+                                <span th:if="${#fields.hasErrors('user.username')}" th:errors="*{user.username}" class="red-text"></span>
+                                <label for="user">Username</label>
+                            </div>
+                            <div class="input-field col s12 m12 l4">
+                                <input id="pwd" type="password" class="validate" required="required" th:field="*{user.password}">
+                                <span th:if="${#fields.hasErrors('user.password')}" th:errors="*{user.password}" class="red-text"></span>
+                                <label for="pwd">Password</label>
+                            </div>
+                            <div class="input-field col s12 m12 l4">
+                                <input id="con-pwd" type="password" required="required" class="validate" oninput="check(this)">
+                                <label for="con-pwd">Confirm Password</label>
+                            </div>
+                        </div>
+
+                        <div class="card-action">
+                            <button class="btn waves-effect blue darken-3" type="submit" name="action">create
+                                <i class="material-icons right">send</i>
+                            </button>
+                            <input id="clear" type="reset" value="Clear" class="waves-effect grey lighten-5 btn black-text">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <th:block th:replace="fragments/layout::footer">footer</th:block>
+</div>
+<script type="text/javascript">
+
+    function check(input) {
+        if (input.value !== document.getElementById('pwd').value) {
+            input.setCustomValidity('Password Must be Matching.');
+        } else {
+            input.setCustomValidity('');
+        }
+    }
+
+
+
+</script>
+
+</body>
+</html>

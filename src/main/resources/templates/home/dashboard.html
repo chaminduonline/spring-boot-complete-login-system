@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Jcloud-Dashboard</title>
+    <th:block th:replace="fragments/layout::script">script</th:block>
+</head>
+<body>
+
+<div th:replace="fragments/layout::header"></div>
+<div th:replace="fragments/layout::drawer"></div>
+
+
+<div class="row">
+    <th:block th:replace="fragments/layout::footer">footer</th:block>
+</div>
+</body>
+</html>
